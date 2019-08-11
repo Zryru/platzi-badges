@@ -6,6 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 import "./global.css";
 import Badge from "./components/Badge";
+import BadgeNew from "./pages/BadgeNew";
 // const jsx = <h1>Hello, platzi Badges!</h1>;
 // const element = React.createElement(
 //   "a",
@@ -23,8 +24,12 @@ import Badge from "./components/Badge";
 // const jsx = <h1> Hola, soy {name}</h1>
 const container = document.getElementById("root");
 
+// ReactDOM.render(
+//   <Badge name="Octoling" game="splatoon" twitter="@splat" />,
+//   container
+// );
 ReactDOM.render(
-  <Badge name="Octoling" game="splatoon" twitter="@splat" />,
+  <BadgeNew />,
   container
 );
 
