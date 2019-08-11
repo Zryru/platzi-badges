@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import Badge from './components/Badge';
 
 // const jsx = <h1>Hello, platzi Badges!</h1>;
 // const element = React.createElement(
@@ -12,16 +13,16 @@ import * as serviceWorker from "./serviceWorker";
 //   },
 //   "Ir a platzi"
 // );
-const name = "Zryru";
+// const name = "Zryru";
 // const element = React.createElement(
 //     "h1",
 //     {},
 //     `Hola soy, ${name}`
 // )
-const jsx = <h1> Hola, soy {name}</h1>
+// const jsx = <h1> Hola, soy {name}</h1>
 const container = document.getElementById("root");
 
-ReactDOM.render(jsx, container);
+ReactDOM.render(<Badge />, container);
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 
