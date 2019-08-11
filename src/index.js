@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import 'bootstrap/dist/css/bootstrap.css';
+import './global.css'
 import Badge from './components/Badge';
-
 // const jsx = <h1>Hello, platzi Badges!</h1>;
 // const element = React.createElement(
 //   "a",
