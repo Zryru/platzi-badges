@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 
 export default class BadgeForm extends Component {
-    state = {
-        name: '',
-        email: '',
-        title: '',
-        twitter: ''
-      };
+//   state = {
+
+//   };
+//   state = {
+//     name: "",
+//     email: "",
+//     title: "",
+//     twitter: ""
+//   };
 
   handleChange = e => {
     // console.log({
@@ -27,7 +30,6 @@ export default class BadgeForm extends Component {
     console.log("Submit form");
     e.preventDefault();
     console.log(this.state);
-    
   };
 
   render() {
@@ -39,44 +41,44 @@ export default class BadgeForm extends Component {
           <div className="form-group">
             <label>Name</label>
             <input
-              onChange={this.handleChange}
+              onChange={this.props.onChange}
               className="form-control"
               type="text"
               name="name"
-              value={this.state.name}
+              value={this.props.formValues.name}
             />
           </div>
 
           <div className="form-group">
             <label>Email</label>
             <input
-              onChange={this.handleChange}
+              onChange={this.props.onChange}
               className="form-control"
               type="email"
               name="email"
-              value={this.state.email}
+              value={this.props.formValues.email}
             />
           </div>
 
           <div className="form-group">
             <label>Title</label>
             <input
-              onChange={this.handleChange}
+              onChange={this.props.onChange}
               className="form-control"
               type="text"
               name="title"
-              value={this.state.title}
+              value={this.props.formValues.title}
             />
           </div>
 
           <div className="form-group">
             <label>Twitter</label>
             <input
-              onChange={this.handleChange}
+              onChange={this.props.onChange}
               className="form-control"
               type="text"
               name="twitter"
-              value={this.state.twitter}
+              value={this.props.formValues.twitter}
             />
           </div>
 
