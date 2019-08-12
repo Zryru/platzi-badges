@@ -18,7 +18,7 @@ export default class BadgeNew extends Component {
         <div className="container">
           <div className="row">
             <div className="col-6">
-              <Badge name="Octoling" game="splatoon" twitter="@splat" />
+              <Badge name="Octoling" email="splatoon" title="dps" twitter="@splat" />
             </div>
             <div className="col-6">
               <BadgeForm ></BadgeForm>

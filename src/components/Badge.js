@@ -18,7 +18,8 @@ class Badge extends React.Component {
         </div>
 
         <div className="Badge__section-info">
-          <h3>{this.props.game}</h3>
+          <h3>{this.props.email}</h3>
+          <h3>{this.props.title}</h3>
           <div>{this.props.twitter}</div>
         </div>
 
