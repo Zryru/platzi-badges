@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./global.css";
 import Badge from "./components/Badge";
 import BadgeNew from "./pages/BadgeNew";
+import Badges from "./pages/Badges";
 // const jsx = <h1>Hello, platzi Badges!</h1>;
 // const element = React.createElement(
 //   "a",
@@ -29,7 +30,8 @@ const container = document.getElementById("root");
 //   container
 // );
 ReactDOM.render(
-  <BadgeNew />,
+  // <BadgeNew />,
+  <Badges />,
   container
 );
 
