@@ -5,6 +5,9 @@ import "../styles/Badges.css";
 import logo from "../assets/images/splat3.jpg";
 import Badge from "../components/Badge";
 import BadgesList from "../components/BadgesList";
+
+import {Link} from "react-router-dom";
+
 const STATIC_DATA = [
   {
     id: 1,
@@ -49,9 +52,9 @@ export default class Badges extends Component {
 
         <div className="Badge__container">
           <div className="Badges__buttons">
-            <a href="/badges/new" className="btn btn-primary">
+            <Link to="/badges/new" className="btn btn-primary">
               New Badge
-            </a>
+            </Link>
           </div>
         </div>
 

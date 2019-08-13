@@ -1,8 +1,8 @@
 import React from "react";
 
-import logo from '../assets/images/splat4.jpg';
-import avatar from '../assets/images/splat2.jpg';
-import '../styles/Badge.css';
+import logo from "../assets/images/splat4.jpg";
+import avatar from "../assets/images/splat2.jpg";
+import "../styles/Badge.css";
 
 class Badge extends React.Component {
   render() {

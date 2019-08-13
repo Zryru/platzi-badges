@@ -23,19 +23,19 @@ import Badges from "./pages/Badges";
 //     `Hola soy, ${name}`
 // )
 // const jsx = <h1> Hola, soy {name}</h1>
-const container = document.getElementById("root");
+// const container = document.getElementById("root");
 
 // ReactDOM.render(
 //   <Badge name="Octoling" game="splatoon" twitter="@splat" />,
 //   container
 // );
-ReactDOM.render(
-  // <BadgeNew />,
-  <Badges />,
-  container
-);
+// ReactDOM.render(
+//   // <BadgeNew />,
+//   <Badges />,
+//   container
+// );
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
