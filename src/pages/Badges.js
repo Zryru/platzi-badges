@@ -5,7 +5,7 @@ import logo from "../assets/images/splat3.jpg";
 import Badge from "../components/Badge";
 import BadgesList from "../components/BadgesList";
 
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const STATIC_DATA = [
   {
@@ -32,11 +32,50 @@ const STATIC_DATA = [
 ];
 
 export default class Badges extends Component {
-  state = {
-    data: STATIC_DATA
-  };
+  
+
+  constructor(props) {
+    super(props)
+    console.log('1. constructor()');
+
+    this.state = {
+      data: []
+    };
+  }
+
+  componentDidMount() {
+    console.log('3. componentDidMount()');
+    
+    this.timeout = setTimeout(() => {
+      this.setState({
+        data: STATIC_DATA,
+      });
+    }, 1500);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('5. componentDidUpdate()');
+
+    console.log({
+      prevProps: prevProps,
+      prevState: prevState
+    });
+
+    console.log(
+      {
+        props: this.props,
+        state: this.state
+      }
+    )
+  }
+
+  componentWillUnmount() {
+    console.log('6. componentWillUnmount()');
+    clearTimeout(this.timeout);
+  }
 
   render() {
+    console.log('2/4. Render()')
     return (
       <React.Fragment>
         <div className="Badges">

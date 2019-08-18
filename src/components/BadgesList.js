@@ -9,7 +9,7 @@ export default class BadgesList extends Component {
       <ul className="list-unstyled">
         {this.props.badges.map(badge => {
           return (
-            <li class="Badge-list__container" key={badge.id}>
+            <li className="Badge-list__container" key={badge.id}>
               <div className="row">
                 <div className="col-3">
                   <img className="Badge__avatar avatar" src={avatar} alt="avatar" />
