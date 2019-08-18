@@ -11,12 +11,14 @@ export default class BadgesList extends Component {
           return (
             <li className="Badge-list__container" key={badge.id}>
               <div className="row">
-                <div className="col-3">
-                  <img className="Badge__avatar avatar" src={avatar} alt="avatar" />
+                <div className="col-4">
+                  <img className="Badge__avatar avatar" src={badge.image} alt="avatar" />
                 </div>
-                <div className="col-9">
+                <div className="col-8">
                   <p>{badge.name}</p>
-                  <p>{badge.twitter}</p>
+                  <p>{badge.species}</p>
+                  <p>{badge.gender}</p>
+                  <p>{badge.status}</p>
                 </div>
               </div>
             </li>

@@ -32,50 +32,98 @@ const STATIC_DATA = [
 ];
 
 export default class Badges extends Component {
-  
-
   constructor(props) {
-    super(props)
-    console.log('1. constructor()');
+    super(props);
+    console.log("1. constructor()");
 
     this.state = {
-      data: []
+      nextPage: null,
+      loading: true,
+      errors: null,
+      data: {
+        results: []
+      }
     };
   }
 
   componentDidMount() {
-    console.log('3. componentDidMount()');
-    
-    this.timeout = setTimeout(() => {
-      this.setState({
-        data: STATIC_DATA,
-      });
-    }, 1500);
+    console.log("3. componentDidMount()");
+    this.fetchCharacters();
+    // this.timeout = setTimeout(() => {
+    //   this.setState({
+    //     data: STATIC_DATA,
+    //   });
+    // }, 1500);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('5. componentDidUpdate()');
+    console.log("5. componentDidUpdate()");
 
     console.log({
       prevProps: prevProps,
       prevState: prevState
     });
 
-    console.log(
-      {
-        props: this.props,
-        state: this.state
-      }
-    )
+    console.log({
+      props: this.props,
+      state: this.state
+    });
   }
 
   componentWillUnmount() {
-    console.log('6. componentWillUnmount()');
+    console.log("6. componentWillUnmount()");
     clearTimeout(this.timeout);
   }
 
+  fetchCharacters = async () => {
+    this.setState({
+      loading: true,
+      error: null
+    });
+
+    try {
+      let response;
+      if (this.state.nextPage) {
+        response = await fetch(
+          this.state.nextPage
+        );
+      } else {
+        response = await fetch(
+          `https://rickandmortyapi.com/api/character`
+        );
+      }
+      const data = await response.json();
+      if (data.results) {
+        this.setState({
+          loading: false,
+          nextPage: data.info.next,
+          data: {
+            info: data.info,
+            results: [].concat(
+              this.state.data.results,
+              data.results,
+            )
+          }
+        });
+      } else {
+        this.setState({
+          loading: false,
+          error: response.status
+        });
+      }
+    } catch (error) {
+      this.setState({
+        loading: false,
+        error: error
+      });
+    }
+  };
+
   render() {
-    console.log('2/4. Render()')
+    if (this.state.error) {
+      return `Error: ${this.state.error.message || this.state.error}`;
+    }
+    console.log("2/4. Render()");
     return (
       <React.Fragment>
         <div className="Badges">
@@ -96,9 +144,14 @@ export default class Badges extends Component {
 
         <div className="Badges__list">
           <div className="Badges__container">
-            <BadgesList badges={this.state.data} />
+            <BadgesList badges={this.state.data.results} />
           </div>
         </div>
+
+        {this.state.loading && <div className="loader">loading...</div>}
+        {!this.state.loading && (
+          <button onClick={() => this.fetchCharacters()}>Load more</button>
+        )}
       </React.Fragment>
     );
   }
