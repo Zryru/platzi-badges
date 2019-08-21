@@ -4,7 +4,7 @@ import "../styles/Badges.css";
 import logo from "../assets/images/splat3.jpg";
 import Badge from "../components/Badge";
 import BadgesList from "../components/BadgesList";
-
+import api from '../apis/fake-api';
 import { Link } from "react-router-dom";
 
 const STATIC_DATA = [
@@ -40,9 +40,7 @@ export default class Badges extends Component {
       nextPage: null,
       loading: true,
       errors: null,
-      data: {
-        results: []
-      }
+      data: undefined
     };
   }
 
@@ -76,54 +74,61 @@ export default class Badges extends Component {
   }
 
   fetchCharacters = async () => {
-    this.setState({
-      loading: true,
-      error: null
-    });
+    this.setState({ loading: true, error: null });
 
     try {
-      let response;
-      if (this.state.nextPage) {
-        response = await fetch(
-          this.state.nextPage
-        );
-      } else {
-        response = await fetch(
-          `https://rickandmortyapi.com/api/character`
-        );
-      }
-      const data = await response.json();
-      if (data.results) {
-        this.setState({
-          loading: false,
-          nextPage: data.info.next,
-          data: {
-            info: data.info,
-            results: [].concat(
-              this.state.data.results,
-              data.results,
-            )
-          }
-        });
-      } else {
-        this.setState({
-          loading: false,
-          error: response.status
-        });
-      }
+      const data = await api.badges.list();
+      this.setState({loading: false, data: data});
     } catch (error) {
-      this.setState({
-        loading: false,
-        error: error
-      });
+      this.setState({loading: false, error: error});
     }
+
+    // try {
+    //   let response;
+    //   if (this.state.nextPage) {
+    //     response = await fetch(
+    //       this.state.nextPage
+    //     );
+    //   } else {
+    //     response = await fetch(
+    //       `https://rickandmortyapi.com/api/character`
+    //     );
+    //   }
+    //   const data = await response.json();
+    //   if (data.results) {
+    //     this.setState({
+    //       loading: false,
+    //       nextPage: data.info.next,
+    //       data: {
+    //         info: data.info,
+    //         results: [].concat(
+    //           this.state.data.results,
+    //           data.results,
+    //         )
+    //       }
+    //     });
+    //   } else {
+    //     this.setState({
+    //       loading: false,
+    //       error: response.status
+    //     });
+    //   }
+    // } catch (error) {
+    //   this.setState({
+    //     loading: false,
+    //     error: error
+    //   });
+    // }
   };
 
   render() {
+    console.log("2/4. Render()");
+    if (this.state.loading){
+      return (<div>Loading...</div>)
+    }
     if (this.state.error) {
       return `Error: ${this.state.error.message || this.state.error}`;
     }
-    console.log("2/4. Render()");
     return (
       <React.Fragment>
         <div className="Badges">
@@ -144,7 +149,7 @@ export default class Badges extends Component {
 
         <div className="Badges__list">
           <div className="Badges__container">
-            <BadgesList badges={this.state.data.results} />
+            <BadgesList badges={this.state.data} />
           </div>
         </div>
 
