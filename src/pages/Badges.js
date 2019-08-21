@@ -6,6 +6,8 @@ import Badge from "../components/Badge";
 import BadgesList from "../components/BadgesList";
 import api from '../apis/fake-api';
 import { Link } from "react-router-dom";
+import PageLoading from "../components/PageLoading";
+import PageError from "../components/PageError";
 
 const STATIC_DATA = [
   {
@@ -124,10 +126,10 @@ export default class Badges extends Component {
   render() {
     console.log("2/4. Render()");
     if (this.state.loading){
-      return (<div>Loading...</div>)
+      return (<PageLoading></PageLoading>)
     }
     if (this.state.error) {
-      return `Error: ${this.state.error.message || this.state.error}`;
+      return <PageError error={this.state.error}></PageError>;
     }
     return (
       <React.Fragment>
